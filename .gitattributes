@@ -1,0 +1,117 @@
+#common settings that generally should always be used with your language specific settings
+
+# Auto detect text files and perform LF normalization
+# http://davidlaing.com/2012/09/19/customise-your-gitattributes-to-become-a-git-ninja/
+* text=auto
+encoding UTF-8
+
+# Custom for web project
+*.php text eol=lf
+*.css text eol=lf
+*.css.map text eol=lf
+*.scss text eol=lf
+*.sass text eol=lf
+*.less text eol=lf
+*.js text eol=lf
+*.js.map text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.htm text eol=lf
+*.html text eol=lf
+*.sql text eol=lf
+*.xml text eol=lf
+*.xsl text eol=lf
+*.txt text eol=lf
+*.ini text eol=lf
+*.inc text eol=lf
+*.conf text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.cfg text eol=lf
+*.log text eol=lf
+*.dist text eol=lf
+*.properties text eol=lf
+*.po text eol=lf
+composer.lock text eol=lf
+.htpasswd text eol=lf
+.htaccess text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
+.bowerrc text eol=lf
+.editorconfig text eol=lf
+.jshintrc text eol=lf
+.jscsrc text eol=lf
+.csslintrc text eol=lf
+.babelrc text eol=lf
+doxyfile text eol=lf
+LICENSE text eol=lf
+CREDITS text eol=lf
+FOCUS text eol=lf
+INSTALL text eol=lf
+README text eol=lf
+yii text eol=lf
+.eslintrc text eol=lf
+.eslintignore text eol=lf
+.prettierrc text eol=lf
+
+#
+# The above will handle all files NOT found below
+#
+
+# Documents
+*.doc diff=astextplain
+*.DOC diff=astextplain
+*.docx diff=astextplain
+*.DOCX diff=astextplain
+*.dot diff=astextplain
+*.DOT diff=astextplain
+*.pdf diff=astextplain
+*.PDF diff=astextplain
+*.rtf diff=astextplain
+*.RTF diff=astextplain
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.flv binary
+*.fla binary
+*.swf binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.ttf binary
+*.dll binary
+*.so binary
+*.jar binary
+*.bin binary
+*.ogv binary
+*.svg text eol=lf
+
+# Custom for Linux scripts
+*.sh text eol=lf
+
+# Custom for Windows scripts
+*.bat text eol=crlf
+
+# Custom for Visual Studio
+*.sln text eol=crlf merge=union
+*.csproj merge=union
+*.vbproj merge=union
+*.fsproj merge=union
+*.dbproj merge=union
+
+# Custom for C# projects
+*.cs     diff=csharp
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.c text
+*.h text
+
+# Custom settings for project.

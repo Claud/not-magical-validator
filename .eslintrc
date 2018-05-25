@@ -1,0 +1,62 @@
+{
+    "plugins": [
+        "promise",
+        "prettier"
+    ],
+    "env": {
+        "es6": true,
+        "node": true
+    },
+    "extends": ["eslint:recommended", "google", "prettier", "plugin:promise/recommended"],
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "require-jsdoc": "off",
+
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single", { "avoidEscape": true }],
+        "semi": ["error", "always"],
+        // Prettier conflict.
+        // "wrap-regex": "error",
+        "no-tabs": ["error"],
+        "max-params": ["error", 6],
+        "max-nested-callbacks": ["error", 10],
+        "max-depth": ["error", 4],
+        "require-await": "error",
+        "prefer-promise-reject-errors": "error",
+        "no-useless-return": "error",
+        "no-return-await": "error",
+        "no-loop-func": "error",
+        "no-lone-blocks": "error",
+        "no-eq-null": "error",
+        "no-else-return": "error",
+        "block-scoped-var": "error",
+        "complexity": "error",
+        "array-callback-return": "error",
+        "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
+        "no-undef-init": "error",
+        "no-shadow-restricted-names": "error",
+        "no-delete-var": "error",
+        "no-var": "error",
+        "max-len": [2, {
+            "code": 120,
+            "tabWidth": 2,
+            "ignoreUrls": true,
+            "ignorePattern": "^goog.(module|require)"
+        }],
+
+        // https://github.com/xjamundx/eslint-plugin-promise
+        "promise/always-return": "error",
+        "promise/no-return-wrap": "error",
+        "promise/param-names": "error",
+        "promise/catch-or-return": "error",
+        "promise/no-native": "off",
+        "promise/no-nesting": "warn",
+        "promise/no-promise-in-callback": "warn",
+        "promise/no-callback-in-promise": "warn",
+        "promise/avoid-new": "warn"
+    }
+}
