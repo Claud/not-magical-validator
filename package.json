@@ -1,6 +1,6 @@
 {
     "name": "@claud/not-magical-validator",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "More functional wrapper over \"@claud/checkit\".",
     "homepage": "https://github.com/Claud/not-magical-validator",
     "author": "Shiryaev Andrey <grabzila@gmail.com>",
