@@ -39,15 +39,18 @@ schema.validators = {
     ],
 };
 
-async function validator(name = 'default', options) {
+async function validator(data, options, name = 'default', scenario = 'default') {
     let validatorInstance = Validator.getValidator(name);
     if (!(validatorInstance instanceof Validator)) {
         validatorInstance = new Validator(options);
-        Validator.registration(this.name, validatorInstance);
-    }    
+        Validator.registration(name, validatorInstance);
+    }
+    return await validatorInstance.validate(data, {}, scenario);
 }
 
-data = await validate(data, context, scenario);
+validator(data, schema).then((data) => {
+    // ...
+});
 ```
 
 ## Example of model for [objection.js](https://vincit.github.io/objection.js/)
