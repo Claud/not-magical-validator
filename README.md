@@ -60,6 +60,8 @@ async function validator(data, options, name = 'default', scenario = 'default') 
 
 validator(data, schema).then((data) => {
     // ...
+}).catch((validationError) => {
+    // ....
 });
 ```
 
@@ -183,18 +185,22 @@ class ArticleModel extends Model {
 Using validator.
 
 ```javascript 
-const data = await ArticleModel.validate({
-    runtimeContext: {},
-    data: {
-        // Validator will change this field to the type "string".
-        title: 1111, 
-        slug: 'test',
-        // Validator will remove this field because it is not supported in scenario "create".
-        notInScenario: 11111 
-    },
-    'create',
-});
-console.log(data);
+try {
+    const data = await ArticleModel.validate({
+        runtimeContext: {},
+        data: {
+            // Validator will change this field to the type "string".
+            title: 1111, 
+            slug: 'test',
+            // Validator will remove this field because it is not supported in scenario "create".
+            notInScenario: 11111 
+        },
+        'create',
+    });
+    console.log(data);
+} catch(validationError) {
+    // ...
+}
 
 // > { title: "1111", slug: "test" }
 
