@@ -9,11 +9,13 @@ More functional wrapper over "@claud/checkit". This validator has "scenario" and
 ```javascript
 const { Validator } = require('@claud/not-magical-validator');
 
+// Create schema of validation. 
 const schema = {};
 schema.scenarios = {
     default: ['title', 'slug'],
 };
 schema.filters = [[['title', 'slug'], 'toString']];
+// The validation rules correspond to the format of "@claud/checkit".
 schema.validators = {
     title: [
         'required',
@@ -28,7 +30,7 @@ schema.validators = {
              * @param {*} context
              */
             rule(value, params, context) {
-                return true;
+                throw new Error('It is my error message.');
             },
         },
     ],
@@ -40,11 +42,19 @@ schema.validators = {
 };
 
 async function validator(data, options, name = 'default', scenario = 'default') {
+    // If you want you can use cache for a Validator instance like this:
+    // -----------------------------------------------------------------
+    // Validator.registration(name, validatorInstance);
+    // let instance = Validator.getValidator(name);
+     
     let validatorInstance = Validator.getValidator(name);
     if (!(validatorInstance instanceof Validator)) {
+        // Create validator with your options. 
+        // See full list of parameters in jsdoc {@link Validation}
         validatorInstance = new Validator(options);
         Validator.registration(name, validatorInstance);
     }
+    // Validate data.
     return await validatorInstance.validate(data, {}, scenario);
 }
 
@@ -123,7 +133,7 @@ class ArticleModel extends Model {
      * @return {*} New "dataAfterValidation" object.
      */
     static afterValidation(dataAfterValidation, options) {
-        return void 0;
+        return dataAfterValidation;
     } 
     
     /**
@@ -141,6 +151,7 @@ class ArticleModel extends Model {
         let { runtimeContext, data, oldModel, scenario = 'default' } = options;
         const context = { runtimeContext };
 
+        // If you want validation only new data.
         if (!_.isEmpty(oldModel)) {
             data = Validator.difference(data, oldModel);
             context.oldModel = oldModel;
@@ -171,7 +182,7 @@ class ArticleModel extends Model {
 
 Using validator.
 
-``` javascript 
+```javascript 
 const data = await ArticleModel.validate({
     runtimeContext: {},
     data: {
