@@ -3,6 +3,7 @@ More functional wrapper over "@claud/checkit". This validator has "scenario" and
 
 * Scenarios will help you delete those data that should not be in the object.
 * Filters will help you bring the data to the right kind, before checking them.
+* DefaultValues will help you filling undefined fields.
 
 ## Base example.
 
@@ -14,6 +15,10 @@ const schema = {};
 schema.scenarios = {
     default: ['title', 'slug'],
 };
+schema.defaultValues = [
+    ['name', 'Default name'],
+    [['email', 'phone'], function(attributeName) { return `<< ${val} >> `; } ],
+];
 schema.filters = [[['title', 'slug'], 'toString']];
 // The validation rules correspond to the format of "@claud/checkit".
 schema.validators = {
